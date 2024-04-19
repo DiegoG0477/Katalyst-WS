@@ -5,6 +5,8 @@ import { WebSocketHandler } from './src/handler/socket.handler';
 import { socketioAuthMiddleware } from './src/middlewares/auth.middleware';
 import cors from 'cors';
 
+const PORT = process.env.PORT || 4000;
+
 const app = express();
 app.use(cors());
 
@@ -22,7 +24,6 @@ io.use(socketioAuthMiddleware);
 
 const websocketHandler = new WebSocketHandler(io);
 
-const PORT = 4000;
 server.listen(PORT, () => {
   console.log(`Servidor WebSocket escuchando en el puerto ${PORT}`);
 });

@@ -32,6 +32,7 @@ const socket_io_1 = require("socket.io");
 const socket_handler_1 = require("./src/handler/socket.handler");
 const auth_middleware_1 = require("./src/middlewares/auth.middleware");
 const cors_1 = __importDefault(require("cors"));
+const PORT = process.env.PORT || 4000;
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 const server = http.createServer(app);
@@ -44,7 +45,6 @@ const io = new socket_io_1.Server(server, {
 });
 io.use(auth_middleware_1.socketioAuthMiddleware);
 const websocketHandler = new socket_handler_1.WebSocketHandler(io);
-const PORT = 4000;
 server.listen(PORT, () => {
     console.log(`Servidor WebSocket escuchando en el puerto ${PORT}`);
 });

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-const secretJWT = process.env.SECRET_JWT || 'secret';
+const secretJWT = process.env.SECRET_JWT || 'secret-katalyst';
 
 const { verify } = jwt;
 

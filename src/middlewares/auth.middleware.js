@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.socketioAuthMiddleware = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const secretJWT = process.env.SECRET_JWT || 'secret';
+const secretJWT = process.env.SECRET_JWT || 'secret-katalyst';
 const { verify } = jsonwebtoken_1.default;
 const verifyJWT = (socket, next) => {
     try {
