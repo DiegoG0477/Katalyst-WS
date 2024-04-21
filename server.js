@@ -34,7 +34,11 @@ const auth_middleware_1 = require("./src/middlewares/auth.middleware");
 const cors_1 = __importDefault(require("cors"));
 const PORT = process.env.PORT || 4000;
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Headers', 'x-access-token', 'Origin', 'X-Requested-With', 'Accept', 'access_token'],
+}));
 const server = http.createServer(app);
 const io = new socket_io_1.Server(server, {
     cors: {

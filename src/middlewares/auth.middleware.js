@@ -8,8 +8,9 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const secretJWT = process.env.SECRET_JWT || 'secret-katalyst';
 const { verify } = jsonwebtoken_1.default;
 const verifyJWT = (socket, next) => {
+    var _a, _b;
     try {
-        const token = socket.handshake.auth.token;
+        const token = ((_a = socket.handshake.auth) === null || _a === void 0 ? void 0 : _a.token) || ((_b = socket.handshake.headers) === null || _b === void 0 ? void 0 : _b.access_token);
         /**
         En el cliente:
         const socket = io("http://localhost:3000", {

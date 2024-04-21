@@ -5,7 +5,7 @@ const { verify } = jwt;
 
 const verifyJWT = (socket: any, next: any) => {
     try {
-        const token = socket.handshake.auth.token;
+        const token = socket.handshake.auth?.token || socket.handshake.headers?.access_token;
 
         /**
         En el cliente:
