@@ -23,7 +23,7 @@ export class WebSocketHandler {
     console.log('Client connected.');
 
     socket.on('data:medical', (data) => {
-      this.enqueuePacket({ event: 'data:medical', data });
+      this.enqueuePacket({ event: 'notification:medical', data });
       this.processNextPacket();
     });
 
@@ -57,8 +57,6 @@ export class WebSocketHandler {
       this.isProcessing = true;
       const packet = this.packetBuffer.shift();
       this.handlePacket(packet);
-    } else {
-      this.isProcessing = false;
     }
   }
 
